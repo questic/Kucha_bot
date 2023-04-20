@@ -3,10 +3,15 @@ import discord
 import random
 import asyncio
 from os import system
+from os.path import join, dirname
+from dotenv import load_dotenv
 from keep_alive import keep_alive
 
+dotenv_path = join(dirname(__file__), '../.env')
+# Load file from the path.
+load_dotenv(dotenv_path)
 
-DISCORD_TOKEN = 'xxx'
+DISCORD_TOKEN = os.getenv('TOKEN')
 intents = discord.Intents.all()
 d_bot = discord.Client(intents = intents)
 
