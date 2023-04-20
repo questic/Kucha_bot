@@ -6,7 +6,7 @@ from os import system
 from keep_alive import keep_alive
 
 
-DISCORD_TOKEN = 'OTYzMDA2ODk5MDMxMjY5Mzk2.YlP0EA.-w4eXBGMfmeZmfJhmKE6rmqq-QI'
+DISCORD_TOKEN = 'xxx'
 intents = discord.Intents.all()
 d_bot = discord.Client(intents = intents)
 
