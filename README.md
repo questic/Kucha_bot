@@ -4,6 +4,6 @@
 
 - virtualenv -p python3.10 .venv
 - source .venv/bin/activate 
-- python src/main.py
+- python src/kucha_bot.py
 - (optional to run in background on the server) 
-  - nohup python src/main.py &
+  - nohup python src/kucha_bot.py &
