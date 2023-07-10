@@ -16,6 +16,7 @@ def load_environment_variables():
 
 def create_client():
     intents = discord.Intents.all()
+    intents.reactions = True
     return discord.Client(intents=intents)
 
 
@@ -100,6 +101,22 @@ async def on_message(message):
 async def on_voice_state_update(member, before, after):
     await handle_voice_channel(member, before, after)
 
+@d_bot.event
+async def on_raw_reaction_add(payload):
+    channel_id = payload.channel_id
+    message_id = payload.message_id
+    user_id = payload.user_id
+    emoji = payload.emoji.name
+
+    if channel_id == 1127302822636032110 and message_id == 1127311096810844160:
+        guild = d_bot.get_guild(payload.guild_id)
+        channel = guild.get_channel(channel_id)
+        user = guild.get_member(user_id)
+
+        if emoji == '✅':
+            role = discord.utils.get(guild.roles, name='Новички')
+            await user.add_roles(role)
+            print("role added")
 
 keep_alive()
 DISCORD_TOKEN = load_environment_variables()
